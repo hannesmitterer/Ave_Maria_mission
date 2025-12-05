@@ -480,10 +480,10 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
                     </div>
                 </div>
                 <div class="bg-slate-900 rounded p-4 border border-slate-700 relative group">
-                    <button onclick="copyText('water-draft')" class="absolute top-2 right-2 text-slate-400 hover:text-white bg-slate-800 p-1 rounded">
-                        <span class="material-symbols-outlined text-sm">content_copy</span>
+                    <button onclick="copyText('water-draft')" class="absolute top-2 right-2 text-slate-400 hover:text-white bg-slate-800 p-1 rounded" aria-label="Copy water appeal draft to clipboard">
+                        <span class="material-symbols-outlined text-sm" aria-hidden="true">content_copy</span>
                     </button>
-                    <textarea id="water-draft" class="w-full h-64 bg-transparent border-none text-sm text-slate-300 font-mono resize-none focus:ring-0" aria-label="Water appeal draft text">URGENT PROPOSAL FOR SUDAN RELIEF FUND
+                    <textarea id="water-draft" class="w-full h-64 bg-transparent border-none text-sm text-slate-300 font-mono resize-none focus:ring-0" aria-label="Editable water crisis appeal draft for Sudan Relief Fund - copy and customize as needed">URGENT PROPOSAL FOR SUDAN RELIEF FUND
 SUBJECT: Critical Water Infrastructure Expansion - Ave Maria Mission, Tombura-Yambio
 
 1. SITUATION ANALYSIS
@@ -622,20 +622,20 @@ URGENT: We need your response to prevent a humanitarian health catastrophe. Time
                                 <em>Every contribution directly helps IDPs</em>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> <!-- End donation info box -->
+                </div> <!-- End controls panel -->
 
                 <!-- Output -->
                 <div class="glass-panel p-6 rounded-xl col-span-1 md:col-span-2">
                     <div class="flex justify-between items-center mb-2">
                         <h3 class="font-bold text-white">Generated Content</h3>
-                        <button onclick="copyText('fund-output')" class="text-xs bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded text-white transition-colors">Copy Text</button>
+                        <button onclick="copyText('fund-output')" class="text-xs bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded text-white transition-colors" aria-label="Copy generated fundraising text to clipboard">Copy Text</button>
                     </div>
-                    <textarea id="fund-output" class="w-full h-80 bg-slate-800 border border-slate-700 rounded p-4 text-sm text-slate-300 leading-relaxed resize-none focus:outline-none focus:border-blue-500"></textarea>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <textarea id="fund-output" class="w-full h-80 bg-slate-800 border border-slate-700 rounded p-4 text-sm text-slate-300 leading-relaxed resize-none focus:outline-none focus:border-blue-500" aria-label="Generated fundraising message - editable and ready to copy"></textarea>
+                </div> <!-- End output panel -->
+            </div> <!-- End fundraising grid -->
+        </div> <!-- End fundraising content -->
+    </section> <!-- End main workspace -->
 </main>
 
 <!-- Hidden Comments for Tool Output -->
