@@ -1,0 +1,49 @@
+from openpyxl import Workbook
+
+wb = Workbook()
+
+# Sheet 1: Operational Plan 0-90 days (skeleton)
+ws1 = wb.active
+ws1.title = "Plan_0_90_Days"
+ws1.append(["Day Range", "Objective", "Activities", "Resources Needed", "KPI"])
+rows1 = [
+    ["0–7", "Life-saving water access", 
+     "Rapid WASH assessment; water trucking; chlorination; negotiate access", 
+     "Trucks, fuel, chlorine, security escorts, assessment teams", 
+     "% pop ≥7.5 L/p/d; queue <30min"],
+    ["8–30", "Stabilization", 
+     "Rehabilitate boreholes; deploy mobile treatment units; expand distribution points", 
+     "Pump parts, solar kits, technicians", 
+     "% pop ≥15 L/p/d; # boreholes fixed"],
+    ["31–90", "Early recovery", 
+     "Solarization; community WASH committees; quality monitoring", 
+     "Solar panels, training staff", 
+     "≥80% water points functional; E.coli <1 CFU/100ml"]
+]
+for r in rows1:
+    ws1.append(r)
+
+# Sheet 2: Allocation Algorithm Inputs
+ws2 = wb.create_sheet("Allocation_Inputs")
+ws2.append(["Area", "Population", "Current Supply (L/d)", "Target (L/p/d)"])
+sample = [
+    ["Area A", 12000, 80000, 15],
+    ["Area B", 5000, 20000, 15],
+    ["Area C", 7000, 25000, 15],
+]
+for r in sample:
+    ws2.append(r)
+
+# Sheet 3: Allocation Outputs (auto-calc stub)
+ws3 = wb.create_sheet("Allocation_Results")
+ws3.append(["Area", "Fabbisogno Totale (L/d)", "Gap (L/d)", "Priorità"])
+for area, pop, supply, target in sample:
+    need = pop * target
+    gap = need - supply
+    priority = "High" if gap > 0 else "OK"
+    ws3.append([area, need, gap, priority])
+
+filepath = "/mnt/data/Allocation_WASH_Sudan.xlsx"
+wb.save(filepath)
+
+filepath
