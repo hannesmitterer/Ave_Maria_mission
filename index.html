@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ave Maria Mission</title>
+    <script>
+        function generateMessage() {
+            const tone = document.getElementById('fund-tone').value;
+            const focus = document.getElementById('fund-focus').value;
+            let text = "";
+
+            const stats = "Currently, over 10,300 people are relying on Ave Maria for survival, including 7,326 directly on our mission grounds.";
+            const bankInfo = "Donations can be sent via Mpesa to +254724030026 (Avelino Bassols).
+
+Bank Transfer Option:
+Foerderverein Neue Wege e.V.
+IBAN: DE26 7025 0150 0000 7442 50 
+BIC: BYLADEM1KMS 
+KSK München-Starnberg-Ebersberg.";
+
+            if (tone === 'urgent') {
+                text += "🚨 URGENT UPDATE FROM AVE MARIA, SOUTH SUDAN 🚨\n\n";
+                text += "We are isolated. With major NGOs absent and roads dangerous, we are the only lifeline for thousands. ";
+                text += stats + "\n\n";
+                if (focus === 'water') text += "Our water situation is CRITICAL. The existing pumps cannot handle the load. We are facing a race against time to prevent a cholera outbreak before the rains.\n\n";
+                if (focus === 'school') text += "Our school capacity is 360, but we have 1,027 children waiting for a future. We MUST finish the new classrooms by December 2025 or turn hundreds away.\n\n";
+                text += "Please do not look away. We need your help immediately.\n\n";
+            } else if (tone === 'hopeful') {
+                text += "✨ A BEACON OF HOPE IN THE BUSH ✨\n\n";
+                text += "Despite the challenges, the spirit at Ave Maria remains unbroken. ";
+                text += "While we are hosting over 7,000 displaced neighbors, we see resilience every day.\n\n";
+                if (focus === 'school') text += "The best news? We are building! We plan to open a new primary school in Feb 2026 to welcome over 1,000 children. Education is the only way forward.\n\n";
+                text += "Join us in building this future.\n\n";
+            } else {
+                text += "FIELD REPORT: AVE MARIA MISSION\n\n";
+                text += "Status: Isolated. Security: Unstable. Needs: High.\n";
+                text += "Data: " + stats + "\n\n";
+                if (focus === 'water') text += "Priority 1: Water Infrastructure. Cost estimate for new borehole: $18,500.\n";
+            }
+
+            text += "HOW TO HELP:\n";
+            text += bankInfo + "\n\n";
+            text += "Every contribution is exchanged locally to buy bricks, food, and medicine. Thank you for standing with us.";
+
+            document.getElementById('fund-output').value = text;
+        }
+
+        function copyText() {
+            const output = document.getElementById('fund-output');
+            output.select();
+            document.execCommand('copy');
+            alert('Message copied to clipboard!');
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Ave Maria Mission</h1>
+        <p>Support our efforts to bring hope and survival to thousands in South Sudan.</p>
+    </header>
+
+    <main>
+        <section>
+            <label for="fund-tone">Choose Tone:</label>
+            <select id="fund-tone">
+                <option value="urgent">Urgent</option>
+                <option value="hopeful">Hopeful</option>
+                <option value="neutral">Neutral</option>
+            </select>
+
+            <label for="fund-focus">Choose Focus:</label>
+            <select id="fund-focus">
+                <option value="water">Water</option>
+                <option value="school">School</option>
+                <option value="general">General</option>
+            </select>
+
+            <button onclick="generateMessage()">Generate Fundraising Message</button>
+        </section>
+
+        <section>
+            <h2>Generated Message</h2>
+            <textarea id="fund-output" rows="10" cols="50" readonly></textarea>
+            <button onclick="copyText()">Copy to Clipboard</button>
+        </section>
+
+        <section>
+            <h2>Make a Donation</h2>
+            <p>
+                <button onclick="alert('Mpesa Number: +254724030026')">Donate via Mpesa</button>
+                <button onclick="alert('Bank Info:\nIBAN: DE26 7025 0150 0000 7442 50\nBIC: BYLADEM1KMS')">Donate via Bank Transfer</button>
+                <button onclick="alert('Support Ave Maria with other means!')">Other Ways to Help</button>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Ave Maria Mission. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
