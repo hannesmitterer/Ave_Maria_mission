@@ -1,0 +1,7 @@
+# Ignore IPFS distribution log files
+ipfs_distribution_*.log
+
+# Ignore any temporary test files
+test_*.json
+test_*.txt
+*.tmp

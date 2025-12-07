@@ -1,0 +1,81 @@
+{
+  "peacobond": {
+    "id": "PEACOBOND-SUDAN-2025-001",
+    "title": "South Sudan Humanitarian Water Access Bond",
+    "issuer": "Ave Maria Mission",
+    "issue_date": "2025-12-07",
+    "maturity_date": "2026-12-07",
+    "bond_type": "Peacobond",
+    "purpose": "Funding humanitarian water access and WASH services in South Sudan",
+    "total_value": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "target_beneficiaries": {
+      "population": 24000,
+      "locations": ["Area A", "Area B", "Area C"],
+      "vulnerable_groups": [
+        "Mother and child",
+        "Elderly",
+        "Internally Displaced Persons (IDP)",
+        "Medical facilities"
+      ]
+    },
+    "funded_activities": [
+      {
+        "activity": "Water trucking and emergency distribution",
+        "phase": "0-7 days",
+        "budget": 150000,
+        "kpi": "% population receiving ≥7.5 L/p/d"
+      },
+      {
+        "activity": "Borehole rehabilitation and mobile treatment units",
+        "phase": "8-30 days",
+        "budget": 350000,
+        "kpi": "% population receiving ≥15 L/p/d; # boreholes fixed"
+      },
+      {
+        "activity": "Solar panel installation and community WASH committees",
+        "phase": "31-90 days",
+        "budget": 300000,
+        "kpi": "≥80% water points functional; E.coli <1 CFU/100ml"
+      },
+      {
+        "activity": "Administrative and monitoring costs",
+        "phase": "0-90 days",
+        "budget": 200000,
+        "kpi": "Monthly reporting and transparency"
+      }
+    ],
+    "standards_compliance": [
+      "Sphere Humanitarian Standards",
+      "WHO Water Quality Guidelines",
+      "OCHA Humanitarian Principles"
+    ],
+    "impact_metrics": {
+      "target_water_provision": "15 L per person per day",
+      "target_coverage": "≥80% of beneficiary population",
+      "water_quality": "E.coli <1 CFU/100ml",
+      "access_time": "Queue time <30 minutes",
+      "distance_to_water": "<500 meters"
+    },
+    "transparency_measures": [
+      "Monthly progress reports published on IPFS",
+      "Community feedback mechanisms",
+      "Independent audits",
+      "Public KPI dashboard"
+    ],
+    "contact": {
+      "organization": "Förderverein Neue Wege e.V.",
+      "iban": "DE26 7025 0150 0000 7442 50",
+      "bank": "KSK München-Starnberg-Ebersberg",
+      "bic": "BYLADEM1KMS"
+    },
+    "ipfs_metadata": {
+      "version": "1.0",
+      "document_hash": "To be generated upon IPFS upload",
+      "signature": "Digital signature placeholder",
+      "timestamp": "2025-12-07T02:25:00Z"
+    }
+  }
+}
