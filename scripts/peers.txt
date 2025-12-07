@@ -1,0 +1,27 @@
+# IPFS Peers Configuration File
+#
+# Format: One multiaddr per line
+# Multiaddr format: /ip4/<IP>/tcp/<PORT>/p2p/<PEER_ID>
+# or: /ip4/<IP>/tcp/<PORT>/ipfs/<PEER_ID>
+#
+# Example entries (replace with actual peer information):
+
+# Example peer 1
+# /ip4/192.168.1.100/tcp/4001/p2p/QmPeerID1Example123456789
+
+# Example peer 2
+# /ip4/192.168.1.101/tcp/4001/p2p/QmPeerID2Example987654321
+
+# Example peer 3 (using domain name)
+# /dns4/peer3.example.com/tcp/4001/p2p/QmPeerID3ExampleABCDEF
+
+# Public IPFS bootstrap nodes (for testing)
+/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN
+/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa
+
+# Instructions:
+# 1. Replace example entries with your actual IPFS peer multiaddrs
+# 2. You can get your local peer multiaddr by running: ipfs id
+# 3. Share your multiaddr with others who want to connect to your node
+# 4. Comments (lines starting with #) are ignored
+# 5. Empty lines are ignored
