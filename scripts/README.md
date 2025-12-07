@@ -282,9 +282,14 @@ tail -f ipfs_distribution_*.log
    - Use encryption for sensitive data before uploading
    - Consider private IPFS networks for confidential content
 
-3. **SSH Keys:**
-   - Use SSH key authentication (not passwords)
-   - Restrict SSH access with proper firewall rules
+3. **SSH Security:**
+   - The script uses `StrictHostKeyChecking=no` for SSH verification convenience
+   - **WARNING:** This disables host key verification and may expose to man-in-the-middle attacks
+   - For production use, configure proper SSH key management:
+     - Add host keys to `~/.ssh/known_hosts` before running verification
+     - Use SSH key-based authentication (not passwords)
+     - Consider removing the `-o StrictHostKeyChecking=no` option
+   - Restrict SSH access with proper firewall rules and fail2ban
 
 ## Files in This Directory
 

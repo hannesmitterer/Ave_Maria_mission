@@ -34,16 +34,6 @@ PEER_CONNECT_TIMEOUT=10
 # Logging Functions
 ###############################################################################
 
-# Log message to both console and log file
-log() {
-    local level="$1"
-    shift
-    local message="$*"
-    local timestamp
-    timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-    echo -e "${timestamp} [${level}] ${message}" | tee -a "$LOG_FILE"
-}
-
 log_info() {
     echo -e "${BLUE}[INFO]${NC} $*" | tee -a "$LOG_FILE"
 }
@@ -217,10 +207,13 @@ distribute_to_peer() {
     
     log_info "Distributing file (CID: $cid) to peer..."
     
-    # Extract peer ID from multiaddr
+    # Extract peer ID from multiaddr (using portable sed instead of grep -P)
     # Format: /ip4/192.168.1.1/tcp/4001/p2p/QmPeerID
     local peer_id
-    peer_id=$(echo "$peer_addr" | grep -oP '/p2p/\K[^/]+' || echo "$peer_addr" | grep -oP '/ipfs/\K[^/]+')
+    peer_id=$(echo "$peer_addr" | sed -n 's|.*/p2p/\([^/]*\).*|\1|p')
+    if [ -z "$peer_id" ]; then
+        peer_id=$(echo "$peer_addr" | sed -n 's|.*/ipfs/\([^/]*\).*|\1|p')
+    fi
     
     if [ -z "$peer_id" ]; then
         log_warning "Could not extract peer ID from: $peer_addr"
@@ -248,8 +241,12 @@ verify_on_peer() {
     fi
     
     log_info "Verifying file on peer via SSH: $ssh_host"
+    log_warning "SSH verification uses relaxed host key checking. Ensure you trust the remote host."
     
     # Try to check if file exists on remote peer
+    # Note: Using StrictHostKeyChecking=no for convenience, but be aware this
+    # disables host key verification and may expose to MITM attacks.
+    # For production use, consider proper SSH key management.
     local output
     local exit_code
     output=$(ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no "$ssh_host" "ipfs pin ls | grep -q $cid" 2>&1)
