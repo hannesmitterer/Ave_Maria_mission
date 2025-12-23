@@ -6,6 +6,14 @@ Ave Maria Mission - Humanitarian Response System
 This module implements the complete Debt Axiom Evaluation Protocol
 with integration to Custos Sentimento (Guardian of Sentiment).
 
+IMPORTANT: This is a demonstration implementation for educational and
+documentation purposes. For production use, the following should be
+enhanced with proper cryptographic libraries:
+- Digital signatures (use ECDSA/RSA instead of simple hashing)
+- Secure random token generation (use secrets module)
+- Key derivation functions (use PBKDF2/Argon2)
+- Multi-signature collection (handle participant unavailability)
+
 License: MIT / Public Domain (Unlicense)
 Version: 1.0
 Date: 2025-12-23
@@ -31,7 +39,13 @@ class Participant:
     signature: Optional[str] = None
     
     def sign(self, operation_hash: str) -> str:
-        """Simulate signing an operation (in production, use real crypto)."""
+        """
+        Simulate signing an operation.
+        
+        NOTE: This is a simplified demonstration. In production, use proper
+        cryptographic signature algorithms like ECDSA or RSA from the
+        cryptography library to ensure authentication and non-repudiation.
+        """
         # Simplified signing - in production use cryptography library
         signature = hashlib.sha256(
             f"{self.public_key}{operation_hash}".encode()
@@ -67,7 +81,13 @@ class NexusMultisig:
         self.participants.append(participant)
     
     def collect_signatures(self, operation: Dict) -> List[str]:
-        """Collect signatures for an operation."""
+        """
+        Collect signatures for an operation.
+        
+        NOTE: This demonstration collects from first `threshold` participants.
+        In production, attempt to collect from all participants and verify
+        at least `threshold` valid signatures to handle participant unavailability.
+        """
         operation_hash = self._hash_operation(operation)
         signatures = []
         
@@ -221,7 +241,13 @@ class ZeroTrustAuth:
         self.users: Dict[str, User] = {}
     
     def authenticate_user(self, username: str, credentials: str) -> bool:
-        """Authenticate a user (no implicit trust)."""
+        """
+        Authenticate a user (no implicit trust).
+        
+        NOTE: This is a simplified demonstration. In production, use
+        cryptographically secure random number generators and proper
+        key derivation functions (e.g., PBKDF2, Argon2) for token generation.
+        """
         # Simplified authentication - in production use proper crypto
         token = hashlib.sha256(f"{username}{credentials}{time.time()}".encode()).hexdigest()
         
@@ -330,7 +356,8 @@ class CustosSentimento:
             love_score = 0.95
             community_benefit = 0.95
         elif operation_type == "data_collection":
-            human_dignity = 0.85  # Slight privacy concern
+            # Score reflects need for careful privacy protections
+            human_dignity = 0.85
         elif operation_type == "resource_allocation":
             community_benefit = 0.90
         
